@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/reset.css';
+import { Layout } from "antd";
+import TopBar from '@/layout/TopBar';
+import SideBar from '@/layout/SideBar';
+import Overview from '@/views/Home';
+
+const { Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='h-screen flex flex-col'>
+      <TopBar />
+      <div className='flex-1 flex '>
+        <SideBar />
+        <div className='flex-1'>
+          <Overview />
+        </div>
+      </div>
     </div>
   );
 }
