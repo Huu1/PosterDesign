@@ -1,9 +1,12 @@
-import IconFont from "@/components/Iconfont";
-import Photo from "@/components/Photo";
 import React, { useRef, useState } from "react";
+import IconFont from "@/components/Iconfont";
 import PubSub from "pubsub-js";
 
 import "./index.css";
+import BoardSize from "@/layout/SideBar/BoardSize";
+import { TState } from "@/App";
+import Layers from "./Layers";
+import Photo from "./Photo";
 
 enum enumMenu {
   background,
@@ -21,7 +24,7 @@ const sideMemu = [
   { title: "尺寸", icon: "icon-resize_", value: enumMenu.size },
 ];
 
-const Index = () => {
+const Index = (props: JSX.IntrinsicAttributes & TState) => {
   const [checked, setChecked] = useState<any>(enumMenu.photo);
   const ref = useRef<any>();
 
@@ -69,6 +72,18 @@ const Index = () => {
         {
           <Photo
             style={{ display: checked === enumMenu.photo ? "" : "none" }}
+          />
+        }
+        {
+          <BoardSize
+            {...props}
+            style={{ display: checked === enumMenu.size ? "" : "none" }}
+          />
+        }
+        {
+          <Layers
+            {...props}
+            style={{ display: checked === enumMenu.layer ? "" : "none" }}
           />
         }
 

@@ -2,15 +2,15 @@ import { useEffect, useRef } from "react";
 import Konva from "konva";
 import { Rect, Shape } from "react-konva";
 
-const Loading = (props: any) => {
-  const { attrs, scale } = props;
+const Index = (props: any) => {
+  const { shapeProps, scale } = props;
 
   const ref = useRef<any>();
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
     function animate(star: any) {
-      star.rotate(5);
+      star?.rotate(5);
     }
     const anim = new Konva.Animation(function (frame) {
       animate(ref.current);
@@ -24,18 +24,17 @@ const Loading = (props: any) => {
     };
   }, []);
 
+
   return (
     <>
       <Rect
-        x={attrs.x}
-        y={attrs.y}
-        width={attrs.width}
-        height={attrs.height}
+        x={shapeProps.x}
+        y={shapeProps.y}
+        width={shapeProps.width}
+        height={shapeProps.height}
         scale={scale}
         fill={"skyblue"}
         opacity={0.8}
-        offsetX={attrs.width / 2}
-        offsetY={attrs.height / 2}
       />
       <Shape
         ref={ref}
@@ -52,11 +51,11 @@ const Loading = (props: any) => {
         }}
         stroke="#fff"
         fill="#fff"
-        x={attrs.x}
-        y={attrs.y}
+        x={shapeProps.x + (shapeProps.width / 2) * scale.x}
+        y={shapeProps.y + (shapeProps.height / 2) * scale.y}
       />
     </>
   );
 };
 
-export default Loading;
+export default Index;

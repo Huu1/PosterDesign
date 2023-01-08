@@ -1,19 +1,15 @@
-import Konva from "konva";
 import { useState } from "react";
+import { TState } from "@/App";
 import Board from "./Board";
 import Toolbar from "./Toolbar";
 
-const initBoardSize = { width: 1920, height: 1080 };
-
-const Index = () => {
-  const [boardSize, setBoardSize] = useState(initBoardSize);
-
-  const [elements,setElements]=useState<any>([])
-
+const Index = (
+  props: JSX.IntrinsicAttributes & TState
+) => {
   return (
     <div className="flex flex-col h-full">
       <Toolbar />
-      <Board boardSize={boardSize} elements={elements} setElements={setElements} setBoardSize={setBoardSize} />
+      <Board {...props} />
     </div>
   );
 };

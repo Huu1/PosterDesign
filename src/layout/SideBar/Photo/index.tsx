@@ -6,7 +6,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import "./index.css";
 import Masonry from "react-masonry-css";
 import { useRequest } from "ahooks";
-import PubSub from "pubsub-js";
 
 // const fetchImage = () => {
 //   return request({
